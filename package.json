@@ -1,0 +1,31 @@
+{
+  "name": "memo-app",
+  "version": "0.0.1",
+  "author": "yukika",
+  "repository": {
+    "type": "git"
+  },
+  "scripts": {
+    "watch": "mkdir -p build/dev; cp src/index.html build/dev/; watchify -d src/script/index.coffee -o build/dev/app.js",
+    "build": "mkdir -p build/release; cp src/index.html build/release/; browserify src/script/index.coffee -o build/release/app.js"
+  },
+  "browserify": {
+    "transform": [
+      "coffeeify",
+      "react-jade"
+    ]
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.13.3",
+    "react-jade": "^2.4.0"
+  },
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "coffeeify": "^1.1.0",
+    "watchify": "^3.3.1"
+  },
+  "browser": {
+    "vendor": "./src/script/vendor.coffee"
+  }
+}
