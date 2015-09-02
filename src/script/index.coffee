@@ -1,11 +1,16 @@
 {React, $, Container} = require 'vendor'
+jade = require 'react-jade'
 
 Editor = require './components/editor/index.coffee'
 EditorAction = require './contexts/editor/action.coffee'
 EditorStore = require './contexts/editor/store.coffee'
+View = require './components/view/index.coffee'
 
 change = (value) ->
+  console.info 'fire change event from editor'
   EditorAction.change(value)
+
+template = jade.compileFile "#{__dirname}/template.jade"
 
 class App extends React.Component
   @getStores: ->
@@ -15,7 +20,10 @@ class App extends React.Component
     editor: EditorStore.getState()
 
   render: ->
-    $ Editor, {change: change, value: @state.editor.value}
+    editor = $ Editor, {change: change, value: @state.editor.value}
+    view = $ View, {value: @state.editor.value}
+
+    template editor: editor, view: view
 
 appContainer =  Container.create App
 

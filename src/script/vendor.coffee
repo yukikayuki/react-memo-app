@@ -9,6 +9,7 @@ ReduceStore = fluxUtils.ReduceStore
 Container = fluxUtils.Container
 
 Immutable = require 'immutable-store'
+marked = require 'marked'
 
 
 module.exports =
@@ -18,3 +19,4 @@ module.exports =
   ReduceStore: ReduceStore
   Immutable: Immutable
   Container: Container
+  marked: marked
