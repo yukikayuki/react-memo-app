@@ -4,15 +4,13 @@ jade = require 'react-jade'
 template = jade.compileFile "#{__dirname}/template.jade"
 
 class Editor extends React.Component
-  constructor: ->
-    @state =
-      value: ''
+  constructor: (props) ->
+    @props = props
 
   onChange: (e) ->
-    @setState value: e.target.value
-    console.log e.target.value
+    @props.change e.target.value
 
   render: ->
-    template onChange: @onChange.bind(this), defaultValue: @state.value
+    template onChange: @onChange.bind(this), defaultValue: @props.value
 
 module.exports = Editor
