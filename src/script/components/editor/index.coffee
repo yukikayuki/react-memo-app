@@ -9,10 +9,10 @@ class Editor extends React.Component
       value: ''
 
   onChange: (e) ->
+    @setState value: e.target.value
     console.log e.target.value
 
   render: ->
     template onChange: @onChange.bind(this), defaultValue: @state.value
 
 module.exports = Editor
-
