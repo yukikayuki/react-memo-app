@@ -4,9 +4,14 @@ class EditorStore extends ReduceStore
   getInitialState: ->
     Immutable
       value: ''
+      id: 1
 
   reduce: (state, action) ->
-    state.set 'value', action.value
+    if action.type == 'EditorAction:inputText'
+      state.set 'value', action.value
+
+    else
+      state
 
 
 module.exports = new EditorStore Dispatcher

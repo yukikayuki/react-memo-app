@@ -6,26 +6,27 @@ EditorAction = require './contexts/editor/action.coffee'
 EditorStore = require './contexts/editor/store.coffee'
 View = require './components/view/index.coffee'
 Sentences = require './components/sentences/index.coffee'
+SentencesAction = require './contexts/sentences/action.coffee'
+SentencesStore = require './contexts/sentences/store.coffee'
 
-change = (value) ->
-  console.info 'fire change event from editor'
-  EditorAction.change(value)
+change = (sentence) ->
+  EditorAction.change sentence.value
+  SentencesAction.change sentence.id, sentence.value
 
 template = jade.compileFile "#{__dirname}/template.jade"
 
-sentencesData = [{text: "aa"}, {text: "bb"}, {text: "cc"}]
-
 class App extends React.Component
   @getStores: ->
-    [EditorStore]
+    [EditorStore, SentencesStore]
 
   @calculateState: (prevState) ->
     editor: EditorStore.getState()
+    sentences: SentencesStore.getState()
 
   render: ->
-    editor = $ Editor, {change: change, value: @state.editor.value}
+    editor = $ Editor, {change: change, id : @state.editor.id, value: @state.editor.value}
     view = $ View, {value: @state.editor.value}
-    sentences = $ Sentences, {sentences: sentencesData}
+    sentences = $ Sentences, {sentences: @state.sentences.sentences}
 
     template editor: editor, view: view, sentences: sentences
 
