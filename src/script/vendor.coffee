@@ -11,6 +11,7 @@ Container = fluxUtils.Container
 Immutable = require 'immutable-store'
 marked = require 'marked'
 
+_ = require 'underscore'
 
 module.exports =
   React: React
@@ -20,3 +21,4 @@ module.exports =
   Immutable: Immutable
   Container: Container
   marked: marked
+  _: _
