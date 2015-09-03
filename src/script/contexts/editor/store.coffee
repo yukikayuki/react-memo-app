@@ -1,4 +1,6 @@
-{Dispatcher, ReduceStore, Immutable} = require 'vendor'
+{Dispatcher, ReduceStore, Immutable, _} = require 'vendor'
+
+SentenceStore = require '../sentences/store.coffee'
 
 class EditorStore extends ReduceStore
   getInitialState: ->
@@ -11,9 +13,13 @@ class EditorStore extends ReduceStore
       state.set 'text', action.text
 
     else if action.type == 'EditorAction:changeActive'
+      sentences = SentenceStore.getState().sentences
+      s = _.findWhere sentences, {id: action.id}
+
       Immutable
-        text: action.text
-        id: action.id
+        text: s.text
+        id: s.id
+
     else
       state
 

@@ -13,6 +13,8 @@ marked = require 'marked'
 
 _ = require 'underscore'
 
+Promise = require 'bluebird'
+
 module.exports =
   React: React
   $: $
@@ -22,3 +24,4 @@ module.exports =
   Container: Container
   marked: marked
   _: _
+  Promise: Promise

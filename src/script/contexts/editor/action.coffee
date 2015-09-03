@@ -1,6 +1,4 @@
-{Dispatcher, _} = require 'vendor'
-
-SentenceStore = require '../sentences/store.coffee'
+{Dispatcher} = require 'vendor'
 
 keys =
   inputText: 'EditorAction:inputText'
@@ -11,8 +9,5 @@ module.exports = class EditorAction
     Dispatcher.dispatch type: keys.inputText, text: text
 
   @changeActive: (sentenceId) ->
-    sentences = SentenceStore.getState().sentences
-    s = _.findWhere sentences, {id: sentenceId}
-
-    Dispatcher.dispatch type: keys.changeActive, id: s.id, text: s.text
+    Dispatcher.dispatch type: keys.changeActive, id: sentenceId
 
