@@ -11,8 +11,8 @@ SentencesStore = require './contexts/sentences/store.coffee'
 
 # TODO こいつらの管理方法を考える
 change = (sentence) ->
-  EditorAction.change sentence.value
-  SentencesAction.change sentence.id, sentence.value
+  EditorAction.change sentence.text
+  SentencesAction.change sentence.id, sentence.text
 
 template = jade.compileFile "#{__dirname}/template.jade"
 
@@ -25,8 +25,8 @@ class App extends React.Component
     sentences: SentencesStore.getState()
 
   render: ->
-    editor = $ Editor, {change: change, id : @state.editor.id, value: @state.editor.value}
-    view = $ View, {value: @state.editor.value}
+    editor = $ Editor, {change: change, id : @state.editor.id, text: @state.editor.text}
+    view = $ View, {text: @state.editor.text}
     sentences = $ Sentences, {sentences: @state.sentences.sentences}
 
     template editor: editor, view: view, sentences: sentences

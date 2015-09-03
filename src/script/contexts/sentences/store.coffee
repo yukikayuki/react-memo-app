@@ -11,7 +11,7 @@ class SentencesStore extends ReduceStore
       newSentences = state.sentences.map (s) ->
         if s.id == action.id
           id: action.id
-          text: action.value
+          text: action.text
         else
           s
 

@@ -5,10 +5,10 @@ template = jade.compileFile "#{__dirname}/template.jade"
 
 class Editor extends React.Component
   onChange: (e) ->
-    value = e.target.value
-    @props.change id: @props.id, value: value
+    text = e.target.value
+    @props.change id: @props.id, text: text
 
   render: ->
-    template onChange: @onChange.bind(this), defaultValue: @props.value
+    template onChange: @onChange.bind(this), text: @props.text
 
 module.exports = Editor

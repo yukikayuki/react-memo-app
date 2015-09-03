@@ -8,7 +8,7 @@ class View extends React.Component
     @props = props
 
   render: ->
-    md = marked @props.value.toString(), {sanitize: false}
+    md = marked @props.text.toString(), {sanitize: false}
     template md: md
 
 

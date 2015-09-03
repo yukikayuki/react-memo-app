@@ -3,16 +3,16 @@
 class EditorStore extends ReduceStore
   getInitialState: ->
     Immutable
-      value: ''
+      text: ''
       id: 1
 
   reduce: (state, action) ->
     if action.type == 'EditorAction:inputText'
-      state.set 'value', action.value
+      state.set 'text', action.text
 
     else if action.type == 'EditorAction:changeActive'
       Immutable
-        value: action.value
+        text: action.text
         id: action.id
     else
       state
