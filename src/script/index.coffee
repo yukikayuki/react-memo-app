@@ -9,6 +9,7 @@ Sentences = require './components/sentences/index.coffee'
 SentencesAction = require './contexts/sentences/action.coffee'
 SentencesStore = require './contexts/sentences/store.coffee'
 
+# TODO こいつらの管理方法を考える
 change = (sentence) ->
   EditorAction.change sentence.value
   SentencesAction.change sentence.id, sentence.value
