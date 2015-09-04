@@ -1,12 +1,17 @@
 {React} = require 'vendor'
 jade = require 'react-jade'
 
+EditorAction = require '../../contexts/editor/action.coffee'
+SentencesAction = require '../../contexts/sentences/action.coffee'
+
 template = jade.compileFile "#{__dirname}/template.jade"
 
 class Editor extends React.Component
   onChange: (e) ->
     text = e.target.value
-    @props.change id: @props.id, text: text
+
+    EditorAction.change text
+    SentencesAction.change @props.id, text
 
   render: ->
     template onChange: @onChange.bind(this), text: @props.text
