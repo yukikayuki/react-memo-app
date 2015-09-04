@@ -8,6 +8,7 @@ View = require './components/view/index.coffee'
 Sentences = require './components/sentences/index.coffee'
 SentencesAction = require './contexts/sentences/action.coffee'
 SentencesStore = require './contexts/sentences/store.coffee'
+SentencesControl = require './components/sentences_control/index.coffee'
 
 # TODO こいつらの管理方法を考える
 change = (sentence) ->
@@ -28,8 +29,9 @@ class App extends React.Component
     editor = $ Editor, {change: change, id : @state.editor.id, text: @state.editor.text}
     view = $ View, {text: @state.editor.text}
     sentences = $ Sentences, {sentences: @state.sentences.sentences}
+    sentencesControl = $ SentencesControl
 
-    template editor: editor, view: view, sentences: sentences
+    template editor: editor, view: view, sentences: sentences, sentencesControl: sentencesControl
 
 appContainer =  Container.create App
 

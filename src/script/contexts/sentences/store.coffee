@@ -34,6 +34,12 @@ class SentencesStore extends ReduceStore
     else if action.type == 'SentencesAction:init'
       state.set 'sentences', action.sentences
 
+    else if action.type == 'SentencesAction:add'
+      s = state.sentences.map (_s) ->
+        _s
+
+      state.set 'sentences', s.concat action.sentence
+
     else
       state
 
