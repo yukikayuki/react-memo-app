@@ -2,17 +2,16 @@
 jade = require 'react-jade'
 
 Editor = require './components/editor/index.coffee'
-EditorAction = require './contexts/editor/action.coffee'
-EditorStore = require './contexts/editor/store.coffee'
 View = require './components/view/index.coffee'
 Sentences = require './components/sentences/index.coffee'
-SentencesAction = require './contexts/sentences/action.coffee'
-SentencesStore = require './contexts/sentences/store.coffee'
 SentencesControl = require './components/sentences_control/index.coffee'
-SentencesUtils = require './contexts/sentences/utils.coffee'
 
-# 初期化
-SentencesAction.fetch()
+EditorAction = require './contexts/editor/action.coffee'
+SentencesAction = require './contexts/sentences/action.coffee'
+EditorStore = require './contexts/editor/store.coffee'
+SentencesStore = require './contexts/sentences/store.coffee'
+
+require('./initialize.coffee').initializeState()
 
 
 # TODO こいつらの管理方法を考える
