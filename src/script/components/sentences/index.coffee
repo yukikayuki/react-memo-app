@@ -7,8 +7,9 @@ template = jade.compileFile "#{__dirname}/template.jade"
 
 class Sentences extends React.Component
   render: ->
-    sentences = @props.sentences.map (s) ->
-      $ Sentence, {text: s.text, id: s.id}
+    sentences = @props.sentences.map (s) =>
+      isActive = @props.activeId == s.id
+      $ Sentence, {text: s.text, id: s.id, isActive: isActive}
 
     template sentences: sentences
 

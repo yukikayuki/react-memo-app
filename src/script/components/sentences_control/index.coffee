@@ -13,6 +13,7 @@ class SentencesControl extends React.Component
       text: ''
 
     SentencesAction.add newSentence
+    SentencesAction.changeActive newSentence.id
     EditorAction.changeActive newSentence.id
 
   render: ->

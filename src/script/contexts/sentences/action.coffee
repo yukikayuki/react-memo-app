@@ -8,6 +8,7 @@ keys =
   addSentence: 'SentencesAction:inputText'
   reset: 'SentencesAction:reset'
   add: 'SentencesAction:add'
+  changeActive: 'SentencesAction:changeActive'
 
 # TODO action keyの管理方法を考える
 module.exports.actionKeys = keys
@@ -19,6 +20,7 @@ module.exports = class SentencesAction
       , 800
     .then () ->
       SentencesAction.reset dummy
+      SentencesAction.changeActive dummy[0].id
       EditorAction.changeActive dummy[0].id
 
   @change: (id, text) ->
@@ -29,4 +31,7 @@ module.exports = class SentencesAction
 
   @add: (sentence) ->
     Dispatcher.dispatch type: keys.add, sentence: sentence
+
+  @changeActive: (id) ->
+    Dispatcher.dispatch type: keys.changeActive, id: id
 

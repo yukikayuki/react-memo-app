@@ -4,6 +4,7 @@ class SentencesStore extends ReduceStore
   getInitialState: ->
     Immutable
       sentences: []
+      activeId: 0
 
   reduce: (state, action) ->
     if action.type == 'SentencesAction:inputText'
@@ -24,6 +25,9 @@ class SentencesStore extends ReduceStore
         _s
 
       state.set 'sentences', s.concat(action.sentence)
+
+    else if action.type == 'SentencesAction:changeActive'
+      state.set 'activeId', action.id
 
     else
       state

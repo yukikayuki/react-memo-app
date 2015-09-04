@@ -3,7 +3,7 @@
 class EditorStore extends ReduceStore
   getInitialState: ->
     Immutable
-      id: 1
+      id: 0
       text: ''
 
   reduce: (state, action) ->

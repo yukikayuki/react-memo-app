@@ -9,6 +9,7 @@ Sentences = require './components/sentences/index.coffee'
 SentencesAction = require './contexts/sentences/action.coffee'
 SentencesStore = require './contexts/sentences/store.coffee'
 SentencesControl = require './components/sentences_control/index.coffee'
+SentencesUtils = require './contexts/sentences/utils.coffee'
 
 # 初期化
 SentencesAction.fetch()
@@ -32,7 +33,7 @@ class App extends React.Component
   render: ->
     editor = $ Editor, {change: change, id : @state.editor.id, text: @state.editor.text}
     view = $ View, {text: @state.editor.text}
-    sentences = $ Sentences, {sentences: @state.sentences.sentences}
+    sentences = $ Sentences, {sentences: @state.sentences.sentences, activeId: @state.sentences.activeId}
     sentencesControl = $ SentencesControl
 
     template editor: editor, view: view, sentences: sentences, sentencesControl: sentencesControl
