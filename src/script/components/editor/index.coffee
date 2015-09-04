@@ -11,4 +11,7 @@ class Editor extends React.Component
   render: ->
     template onChange: @onChange.bind(this), text: @props.text
 
+  componentDidUpdate: ->
+    React.findDOMNode(@refs.editor).focus()
+
 module.exports = Editor
