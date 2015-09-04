@@ -1,21 +1,6 @@
-{Dispatcher, ReduceStore, Immutable, Promise} = require 'vendor'
-
-EditorAction = require '../editor/action.coffee'
-SentencesAction = require './action.coffee'
+{Dispatcher, ReduceStore, Immutable} = require 'vendor'
 
 class SentencesStore extends ReduceStore
-  constructor: ->
-    super
-    def = [{id: 1, text: "# hello react + coffeescript + react-jade"}, {id: 2, text: "react"}, {id: 3, text: "coffee + react-jade"}]
-    new Promise (resolve) ->
-      setTimeout ->
-        resolve()
-      , 800
-    .then () ->
-      # 直接dispatchしていいのか悩む
-      SentencesAction.init def
-      EditorAction.changeActive def[0].id
-
   getInitialState: ->
     Immutable
       sentences: []
@@ -31,14 +16,14 @@ class SentencesStore extends ReduceStore
 
       state.set 'sentences', newSentences
 
-    else if action.type == 'SentencesAction:init'
+    else if action.type == 'SentencesAction:reset'
       state.set 'sentences', action.sentences
 
     else if action.type == 'SentencesAction:add'
       s = state.sentences.map (_s) ->
         _s
 
-      state.set 'sentences', s.concat action.sentence
+      state.set 'sentences', s.concat(action.sentence)
 
     else
       state

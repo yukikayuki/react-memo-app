@@ -10,6 +10,10 @@ SentencesAction = require './contexts/sentences/action.coffee'
 SentencesStore = require './contexts/sentences/store.coffee'
 SentencesControl = require './components/sentences_control/index.coffee'
 
+# 初期化
+SentencesAction.fetch()
+
+
 # TODO こいつらの管理方法を考える
 change = (sentence) ->
   EditorAction.change sentence.text
