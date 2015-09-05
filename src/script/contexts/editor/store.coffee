@@ -15,6 +15,11 @@ class EditorStore extends ReduceStore
         id: action.sentences.id
         text: action.sentences.text
 
+    else if action.type == 'EditorAction:cleanUp'
+      Immutable
+        id: 0
+        text: ''
+
     else
       state
 

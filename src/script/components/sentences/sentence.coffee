@@ -7,11 +7,22 @@ SentencesAction = require '../../contexts/sentences/action.coffee'
 template = jade.compileFile "#{__dirname}/sentence.jade"
 
 class Sentence extends React.Component
+  onRemove: (e) ->
+    e.stopPropagation()
+
+    if confirm('文章を削除します')
+      SentencesAction.remove @props.id
+      EditorAction.cleanUp()
+
   onClick: ->
     EditorAction.changeActive @props.id
     SentencesAction.changeActive @props.id
 
   render: ->
-    template text: @props.text, isActive: @props.isActive, onClick: @onClick.bind(this)
+    template
+      text: @props.text
+      isActive: @props.isActive
+      onClick: @onClick.bind(this)
+      onRemove: @onRemove.bind(this)
 
 module.exports = Sentence

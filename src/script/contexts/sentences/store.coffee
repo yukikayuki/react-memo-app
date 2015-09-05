@@ -1,4 +1,4 @@
-{Dispatcher, ReduceStore, Immutable} = require 'vendor'
+{Dispatcher, ReduceStore, Immutable, _} = require 'vendor'
 
 class SentencesStore extends ReduceStore
   getInitialState: ->
@@ -28,6 +28,12 @@ class SentencesStore extends ReduceStore
 
     else if action.type == 'SentencesAction:changeActive'
       state.set 'activeId', action.id
+
+    else if action.type == 'SentencesAction:remove'
+      s = _.reject state.sentences, (s) ->
+        s.id == action.id
+
+      state.set 'sentences', s
 
     else
       state

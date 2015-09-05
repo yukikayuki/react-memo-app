@@ -5,6 +5,7 @@ SentencesStore = require '../sentences/store.coffee'
 keys =
   inputText: 'EditorAction:inputText'
   changeActive: 'EditorAction:changeActive'
+  cleanUp: 'EditorAction:cleanUp'
 
 module.exports = class EditorAction
   @change: (text) ->
@@ -16,3 +17,5 @@ module.exports = class EditorAction
 
     Dispatcher.dispatch type: keys.changeActive, sentences: s
 
+  @cleanUp: ->
+    Dispatcher.dispatch type: keys.cleanUp
