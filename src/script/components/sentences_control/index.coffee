@@ -16,8 +16,11 @@ class SentencesControl extends React.Component
     SentencesAction.changeActive newSentence.id
     EditorAction.changeActive newSentence.id
 
+  onSave: ->
+    SentencesAction.save()
+
   render: ->
-    template onClick: @onClick.bind(this)
+    template onClick: @onClick.bind(this), onSave: @onSave.bind(this)
 
 module.exports = SentencesControl
 

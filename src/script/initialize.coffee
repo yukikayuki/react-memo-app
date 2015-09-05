@@ -6,6 +6,6 @@ module.exports =
     initializeState: ->
       sentencesPromise = SentencesUtils.fetch()
       sentencesPromise.then (data) ->
-        SentencesAction.reset data
-        SentencesAction.changeActive data[0].id
-        EditorAction.changeActive data[0].id
+        SentencesAction.reset data.sentences
+        SentencesAction.changeActive data.activeId
+        EditorAction.changeActive data.activeId

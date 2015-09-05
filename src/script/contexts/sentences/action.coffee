@@ -1,5 +1,8 @@
 {Dispatcher, Promise} = require 'vendor'
 
+SentencesStore = require './store.coffee'
+SentencesUtils = require './utils.coffee'
+
 keys =
   addSentence: 'SentencesAction:inputText'
   reset: 'SentencesAction:reset'
@@ -24,3 +27,8 @@ module.exports = class SentencesAction
 
   @remove: (id) ->
     Dispatcher.dispatch type: keys.remove, id: id
+
+  @save: ->
+    data = SentencesStore.getState()
+    SentencesUtils.save data
+
