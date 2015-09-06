@@ -9,7 +9,7 @@ template = jade.compileFile "#{__dirname}/template.jade"
 class SentencesControl extends React.Component
   onClick: ->
     newSentence =
-      id: _.uniqueId()
+      id: _.uniqueId(new Date().getTime())
       text: ''
 
     SentencesAction.add newSentence

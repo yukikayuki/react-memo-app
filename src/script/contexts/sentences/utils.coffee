@@ -1,8 +1,8 @@
 {Promise, _} = require 'vendor'
 
 info =
-  activeId: '-1'
-  sentences: [{id: '-1', text: "# hello react + coffeescript + react-jade"}, {id: '-2', text: "react"}, {id: '-3', text: "coffee + react-jade"}]
+  activeId: '1'
+  sentences: [{id: '1', text: "# hello react + coffeescript + react-jade"}, {id: '2', text: "react"}, {id: '3', text: "coffee + react-jade"}]
 
 ls = localStorage
 module.exports = class SentencesUtils
