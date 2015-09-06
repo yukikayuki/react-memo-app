@@ -3,7 +3,7 @@
 class EditorStore extends ReduceStore
   getInitialState: ->
     Immutable
-      id: 0
+      id: '0'
       text: ''
 
   reduce: (state, action) ->
@@ -16,9 +16,7 @@ class EditorStore extends ReduceStore
         text: action.sentences.text
 
     else if action.type == 'EditorAction:cleanUp'
-      Immutable
-        id: 0
-        text: ''
+      @getInitialState()
 
     else
       state

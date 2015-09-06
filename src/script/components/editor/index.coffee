@@ -7,6 +7,10 @@ SentencesAction = require '../../contexts/sentences/action.coffee'
 template = jade.compileFile "#{__dirname}/template.jade"
 
 class Editor extends React.Component
+  @propTypes:
+    id: React.PropTypes.string
+    text: React.PropTypes.string
+
   onChange: (e) ->
     text = e.target.value
 

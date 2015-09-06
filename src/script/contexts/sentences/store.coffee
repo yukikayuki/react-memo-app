@@ -4,7 +4,7 @@ class SentencesStore extends ReduceStore
   getInitialState: ->
     Immutable
       sentences: []
-      activeId: 0
+      activeId: '0'
 
   reduce: (state, action) ->
     if action.type == 'SentencesAction:inputText'

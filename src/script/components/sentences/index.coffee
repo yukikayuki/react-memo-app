@@ -6,6 +6,10 @@ Sentence = require './sentence.coffee'
 template = jade.compileFile "#{__dirname}/template.jade"
 
 class Sentences extends React.Component
+  @propTypes:
+    activeId: React.PropTypes.string
+    sentences: React.PropTypes.array
+
   render: ->
     sentences = @props.sentences.map (s) =>
       isActive = @props.activeId == s.id

@@ -7,6 +7,10 @@ SentencesAction = require '../../contexts/sentences/action.coffee'
 template = jade.compileFile "#{__dirname}/sentence.jade"
 
 class Sentence extends React.Component
+  @propTypes:
+    id: React.PropTypes.string
+    isActive: React.PropTypes.bool
+
   onRemove: (e) ->
     e.stopPropagation()
 

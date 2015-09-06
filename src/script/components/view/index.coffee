@@ -4,8 +4,8 @@ jade = require 'react-jade'
 template = jade.compileFile "#{__dirname}/template.jade"
 
 class View extends React.Component
-  constructor: (props) ->
-    @props = props
+  @propTypes:
+    text: React.PropTypes.string
 
   render: ->
     md = marked @props.text.toString(), {sanitize: false}
