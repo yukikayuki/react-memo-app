@@ -2,7 +2,11 @@
 
 info =
   activeId: '1'
-  sentences: [{id: '1', text: "# hello react + coffeescript + react-jade"}, {id: '2', text: "react"}, {id: '3', text: "coffee + react-jade"}]
+  sentences: [
+    {id: '1', text: "# Hello \n- React\n- CoffeeScript\n- react-jade"}
+    {id: '2', text: "React"}
+    {id: '3', text: "CoffeeScript + react-jade"}
+  ]
 
 ls = localStorage
 module.exports = class SentencesUtils
