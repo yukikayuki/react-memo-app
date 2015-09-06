@@ -8,7 +8,7 @@ class SentencesStore extends ReduceStore
       activeText: ''
 
   reduce: (state, action) ->
-    if action.type == 'SentencesAction:inputText'
+    if action.type == 'SentencesAction:change'
       newSentences = state.sentences.map (s) ->
         if s.id == action.id
           id: action.id
@@ -23,10 +23,15 @@ class SentencesStore extends ReduceStore
       state.set 'sentences', action.sentences
 
     else if action.type == 'SentencesAction:add'
+      newId = _.uniqueId(new Date().getTime())
+
       s = state.sentences.map (_s) ->
         _s
 
-      state.set 'sentences', s.concat(action.sentence)
+      Immutable
+        sentences: s.concat(id: newId, text: '')
+        activeId: newId
+        activeText: ''
 
     else if action.type == 'SentencesAction:changeActive'
       state.set('activeId', action.sentences.id)
@@ -47,5 +52,6 @@ class SentencesStore extends ReduceStore
   getSentence: (id) ->
     sentences = @getState().sentences
     _.findWhere sentences, {id: id}
+
 
 module.exports = new SentencesStore Dispatcher

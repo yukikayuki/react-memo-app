@@ -1,4 +1,4 @@
-{React, _} = require 'vendor'
+{React} = require 'vendor'
 jade = require 'react-jade'
 
 SentencesAction = require '../../contexts/sentences/action.coffee'
@@ -7,12 +7,7 @@ template = jade.compileFile "#{__dirname}/template.jade"
 
 class SentencesControl extends React.Component
   onClick: ->
-    newSentence =
-      id: _.uniqueId(new Date().getTime())
-      text: ''
-
-    SentencesAction.add newSentence
-    SentencesAction.changeActive newSentence.id
+    SentencesAction.add()
 
   onSave: ->
     SentencesAction.save()

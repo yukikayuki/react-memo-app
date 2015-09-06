@@ -1,10 +1,10 @@
-{Dispatcher, Promise, _} = require 'vendor'
+{Dispatcher, Promise} = require 'vendor'
 
 SentencesStore = require './store.coffee'
 SentencesUtils = require './utils.coffee'
 
 keys =
-  addSentence: 'SentencesAction:inputText'
+  change: 'SentencesAction:change'
   reset: 'SentencesAction:reset'
   add: 'SentencesAction:add'
   changeActive: 'SentencesAction:changeActive'
@@ -14,13 +14,13 @@ keys =
 module.exports.actionKeys = keys
 module.exports = class SentencesAction
   @change: (id, text) ->
-    Dispatcher.dispatch type: keys.addSentence, id: id, text: text
+    Dispatcher.dispatch type: keys.change, id: id, text: text
 
   @reset: (sentences) ->
     Dispatcher.dispatch type: keys.reset, sentences: sentences
 
-  @add: (sentence) ->
-    Dispatcher.dispatch type: keys.add, sentence: sentence
+  @add: ->
+    Dispatcher.dispatch type: keys.add
 
   @changeActive: (id) ->
     s = SentencesStore.getSentence id

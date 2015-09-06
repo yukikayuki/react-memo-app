@@ -1,4 +1,4 @@
-{Promise, _} = require 'vendor'
+{Promise} = require 'vendor'
 
 info =
   activeId: '1'
