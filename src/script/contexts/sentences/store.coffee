@@ -1,4 +1,5 @@
 {Dispatcher, ReduceStore, Immutable, _} = require 'vendor'
+SectionKeys = require('./keys.coffee')
 
 class SentencesStore extends ReduceStore
   getInitialState: ->
@@ -8,7 +9,7 @@ class SentencesStore extends ReduceStore
       activeText: ''
 
   reduce: (state, action) ->
-    if action.type == 'SentencesAction:change'
+    if action.type == SectionKeys.change
       newSentences = state.sentences.map (s) ->
         if s.id == action.id
           id: action.id
@@ -19,10 +20,10 @@ class SentencesStore extends ReduceStore
       state.set('sentences', newSentences)
       .set('activeText', action.text)
 
-    else if action.type == 'SentencesAction:reset'
+    else if action.type == SectionKeys.reset
       state.set 'sentences', action.sentences
 
-    else if action.type == 'SentencesAction:add'
+    else if action.type == SectionKeys.add
       newId = _.uniqueId(new Date().getTime())
 
       s = state.sentences.map (_s) ->
@@ -33,11 +34,11 @@ class SentencesStore extends ReduceStore
         activeId: newId
         activeText: ''
 
-    else if action.type == 'SentencesAction:changeActive'
+    else if action.type == SectionKeys.changeActive
       state.set('activeId', action.sentences.id)
       .set('activeText', action.sentences.text)
 
-    else if action.type == 'SentencesAction:remove'
+    else if action.type == SectionKeys.remove
       s = _.reject state.sentences, (s) ->
         s.id == action.id
 
