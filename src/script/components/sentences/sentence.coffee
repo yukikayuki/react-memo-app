@@ -1,7 +1,6 @@
 {React} = require 'vendor'
 jade = require 'react-jade'
 
-EditorAction = require '../../contexts/editor/action.coffee'
 SentencesAction = require '../../contexts/sentences/action.coffee'
 
 template = jade.compileFile "#{__dirname}/sentence.jade"
@@ -16,10 +15,8 @@ class Sentence extends React.Component
 
     if confirm('文章を削除します')
       SentencesAction.remove @props.id
-      EditorAction.cleanUp()
 
   onClick: ->
-    EditorAction.changeActive @props.id
     SentencesAction.changeActive @props.id
 
   render: ->

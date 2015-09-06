@@ -1,4 +1,4 @@
-{Dispatcher, Promise} = require 'vendor'
+{Dispatcher, Promise, _} = require 'vendor'
 
 SentencesStore = require './store.coffee'
 SentencesUtils = require './utils.coffee'
@@ -23,7 +23,8 @@ module.exports = class SentencesAction
     Dispatcher.dispatch type: keys.add, sentence: sentence
 
   @changeActive: (id) ->
-    Dispatcher.dispatch type: keys.changeActive, id: id
+    s = SentencesStore.getSentence id
+    Dispatcher.dispatch type: keys.changeActive, sentences: s
 
   @remove: (id) ->
     Dispatcher.dispatch type: keys.remove, id: id

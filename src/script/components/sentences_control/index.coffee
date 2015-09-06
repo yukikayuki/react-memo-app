@@ -2,7 +2,6 @@
 jade = require 'react-jade'
 
 SentencesAction = require '../../contexts/sentences/action.coffee'
-EditorAction = require '../../contexts/editor/action.coffee'
 
 template = jade.compileFile "#{__dirname}/template.jade"
 
@@ -14,7 +13,6 @@ class SentencesControl extends React.Component
 
     SentencesAction.add newSentence
     SentencesAction.changeActive newSentence.id
-    EditorAction.changeActive newSentence.id
 
   onSave: ->
     SentencesAction.save()
